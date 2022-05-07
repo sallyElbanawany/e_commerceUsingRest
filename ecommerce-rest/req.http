@@ -1,0 +1,498 @@
+
+//product 
+
+POST  /myshop/api/products HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: customer
+
+{
+    "categoryId": 1,
+    "imgPath": "product",
+    "price": 18000.0,
+    "productDesc": "iphone",
+    "productName": "mobile",
+    "stock": 5
+}
+
+###
+POST  /myshop/api/products HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: clerk
+
+{
+    "categoryId": 1,
+    "imgPath": "product",
+    "price": 18000.0,
+    "productDesc": "iphone",
+    "productName": "mobile",
+    "stock": 65
+}
+
+###
+POST  /myshop/api/products HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: admin
+
+{
+    "categoryId": 1,
+    "imgPath": "product",
+    "price": 18000.0,
+    "productDesc": "iphone",
+    "productName": "mobile",
+    "stock": 65
+}
+
+###
+
+GET /myshop/api/products HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+###
+
+GET /myshop/api/products/265 HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+###
+
+DELETE  /myshop/api/products/5 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: admain
+
+###
+
+DELETE  /myshop/api/products/8 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: clerk
+
+
+###
+
+DELETE  /myshop/api/products/5 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: customer
+
+###
+PUT	/myshop/api/products/2 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: customer
+
+{
+	
+	"categoryId": 10,
+    "imgPath": "product8766",
+    "price": 18000.0,
+    "productDesc": "iphone555",
+    "productName": "mobile777",
+    "stock": 56
+}
+
+###
+PUT	/myshop/api/products/2 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: clerk
+
+{
+	
+	"categoryId": 10,
+    "imgPath": "product8766",
+    "price": 18000.0,
+    "productDesc": "iphone555",
+    "productName": "mobile777",
+    "stock": 56
+}
+###
+PUT	/myshop/api/products/2 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: admain
+
+{
+	
+	"categoryId": 10,
+    "imgPath": "product8766",
+    "price": 18000.0,
+    "productDesc": "iphone555",
+    "productName": "mobile777",
+    "stock": 56
+}
+
+###
+
+GET /myshop/api/products/search?pattern=mobile HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+###
+
+GET /myshop/api/products/category/laptop HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+
+
+
+
+
+//customer 
+
+###
+
+GET /myshop/api/customer HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+###
+
+GET /myshop/api/customer/2 HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+###
+
+DELETE  /myshop/api/customer/2 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: customer
+
+###
+DELETE  /myshop/api/customer/1 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: clerk
+
+###
+DELETE  /myshop/api/customer/7 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: admain
+
+###
+
+PUT	/myshop/api/customer/1 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: customer
+
+
+{
+	
+	"address": "alex",
+    "dob": "1998-02-02",
+    "email": "aya@gmail.com",
+    "interests": "reding",
+    "isMale": true,
+    "job": "swe",
+    "pass": "12334544",
+    "username": "aya"
+}
+###
+
+PUT	/myshop/api/customer/1 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: clerk
+
+
+{
+	
+	"address": "alex",
+    "dob": "1998-02-02",
+    "email": "aya@gmail.com",
+    "interests": "reding",
+    "isMale": true,
+    "job": "swe",
+    "pass": "12334544",
+    "username": "aya"
+}
+
+###
+
+PUT	/myshop/api/customer/1 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: admain
+
+
+{
+	
+	"address": "alex",
+    "dob": "1998-02-02",
+    "email": "aya@gmail.com",
+    "interests": "reding",
+    "isMale": true,
+    "job": "swe",
+    "pass": "12334544",
+    "username": "aya"
+}
+
+###
+
+POST  /myshop/api/customer HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+
+
+{
+    "address": "alex",
+    "dob": "1998-02-02",
+    "email": "er@gmail.com",
+    "interests": "reding",
+    "isMale": true,
+    "job": "swe",
+    "pass": "12334544",
+    "username": "er"
+}
+
+
+
+
+
+//admin
+
+
+###
+
+GET /myshop/api/admin HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: notdefind
+
+###
+GET /myshop/api/admin HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: admain
+
+
+
+###
+
+GET /myshop/api/admin/2 HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: notDefind
+
+###
+
+GET /myshop/api/admin/4 HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: admain
+
+###
+
+DELETE  /myshop/api/admin/2 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: notDefind
+
+###
+
+DELETE  /myshop/api/admin/1 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: admain
+
+###
+PUT	/myshop/api/admin/1 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: notdefind
+
+
+{
+	
+	"email": "hamed@gmail.com",
+    "isAdmin": true,
+    "pass": "1233455",
+    "username": "hamedhay"
+}
+
+###
+PUT	/myshop/api/admin/3 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: admain
+
+{
+	
+	"email": "hamed@gmail.com",
+    "isAdmin": true,
+    "pass": "1233455",
+    "username": "hamedhay"
+}
+
+###
+
+POST  /myshop/api/admin HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: admain
+
+{
+    "email": "hamed4@gmail.com",
+    "isAdmin": true,
+    "pass": "1233455",
+    "username": "hamed"
+}
+
+###
+
+POST  /myshop/api/admin HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: notdefind
+
+{
+    "email": "hamed4@gmail.com",
+    "isAdmin": true,
+    "pass": "1233455",
+    "username": "hamed"
+}
+
+###
+
+GET /myshop/api/admin/AdminsOrClerks/onlyAdmins HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: admain
+
+###
+
+GET /myshop/api/admin/AdminsOrClerks/onlyClerks HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: admain
+
+
+###
+
+GET /myshop/api/admin/AdminsOrClerks/onlyAdmins HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: notdefind
+
+###
+
+GET /myshop/api/admin/AdminsOrClerks/onlyClerks HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+Authorization: notdefind
+
+
+
+
+# order###
+
+###
+
+GET /myshop/api/orders/1 HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+
+
+
+###
+PUT	/myshop/api/orders/customer/1/updateOrder/1 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: admain
+
+{
+	"createdAt":"1998-02-02",
+    "isSubmitted":false,
+    "totalPrice":143345.1
+}
+
+###
+
+DELETE  /myshop/api/customer/1/removeOrder HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: admain
+
+
+
+# *************************************************
+
+###
+
+GET /myshop/api/orders HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+###
+
+GET /myshop/api/orders/1 HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+
+###
+
+POST  /myshop/api/orders/customer/1/addOrder HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+
+{
+
+    "createdAt":"1998-02-02",
+    "isSubmitted":true,
+    "totalPrice":1435.1
+}
+
+###
+
+DELETE  /myshop/api/orders/1 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+Authorization: admain
+
+###
+PUT	/myshop/api/orders/2 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+Authorization: admain
+
+{
+	"createdAt":"1998-02-02",
+    "isSubmitted":false,
+    "totalPrice":143345.1
+}
+
+
+
+
+# ************************
+
+###
+POST  /myshop/api/cart/order/customer/1/addProduct HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+
+{
+    "createdAt":"1998-02-02",
+    "isSubmitted":false,
+    "totalPrice":143345.1,
+    "orderProductses":[
+        {
+
+            "quantity":20
+        }
+    ]
+
+}
+
+
+
