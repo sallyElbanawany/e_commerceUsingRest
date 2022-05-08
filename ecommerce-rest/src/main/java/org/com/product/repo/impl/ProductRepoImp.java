@@ -97,4 +97,20 @@ public class ProductRepoImp implements ProductRepo {
         return query.getResultList();
     }
 
+    @Override
+    public boolean updateQuantity(int ProductId, int quantity) {
+        
+        ProductsEntity productsEntity= entityManager.find(ProductsEntity.class, ProductId);
+        int currentQuantity=productsEntity.getStock();
+        if(currentQuantity<quantity)
+        return false;
+
+        productsEntity.setStock(currentQuantity-quantity);
+        entityManager.getTransaction().begin();
+        entityManager.merge(productsEntity);
+        entityManager.getTransaction().commit();
+
+        return false;
+    }
+
 }

@@ -14,6 +14,13 @@ public class OrderProductIdDto {
         this.productId = orderProductsIdEntity.getProductId();
     }
 
+    
+
+    public OrderProductIdDto(int orderId2, int productId2) {
+        this.orderId=orderId2;
+        this.productId=productId2;
+    }
+
     public int getOrderId() {
         return orderId;
     }

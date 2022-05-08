@@ -2,7 +2,10 @@ package org.com.order.repo.entity;
 // Generated May 3, 2022, 1:38:42 PM by Hibernate Tools 6.0.0.Beta2
 
 
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +33,9 @@ import org.com.order.service.dto.OrderPostDto;
     ,catalog="myshop"
 )
 public class OrdersEntity  implements java.io.Serializable {
+    // @EmbeddedId
+    // @AttributeOverrides({
+    //         @AttributeOverride(name = "customer_id", column = @Column(name = "user_id", nullable = false)) })
 
 
      private int id;

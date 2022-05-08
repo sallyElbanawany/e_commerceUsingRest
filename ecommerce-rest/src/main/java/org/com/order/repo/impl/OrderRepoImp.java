@@ -84,5 +84,21 @@ public class OrderRepoImp implements OrderRepo {
         return ordersEntity;
     }
 
+    @Override
+    public OrdersEntity finfOrderById(int orderId) {
+        return entityManager.find(OrdersEntity.class, orderId);
+
+    }
+
+    @Override
+    public boolean updateTotalPrice(int orderId,double price) {
+        OrdersEntity ordersEntity= entityManager.find(OrdersEntity.class, orderId);
+        ordersEntity.setTotalPrice(price);
+        entityManager.getTransaction().begin();
+        entityManager.merge(ordersEntity);
+        entityManager.getTransaction().commit();
+        return false;
+    }
+
 }
 

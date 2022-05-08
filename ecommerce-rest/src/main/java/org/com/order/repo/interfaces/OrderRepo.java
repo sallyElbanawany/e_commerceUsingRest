@@ -10,7 +10,9 @@ public interface OrderRepo {
     Long getOrdersCount();
     List<OrdersEntity> getOrders();
     List<OrdersEntity> getOrdersByCustomerId(int customerId);
+    OrdersEntity finfOrderById(int orderId);
     OrdersEntity addOrder(int id,OrderPostDto orderPostDto);
     OrdersEntity updateOrder(int OrderId,OrderPostDto orderPostDto);
     OrdersEntity deleteOrder(int id);
+    boolean updateTotalPrice(int orderId,double price);
 }

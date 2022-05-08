@@ -1,14 +1,19 @@
 package org.com.util.mapper;
 
+import com.stripe.model.terminal.Reader.ReaderAction.SetReaderDisplayAction.Cart;
+
 import org.com.admin.repo.entity.AdminsEntity;
 import org.com.admin.service.dto.AdminDto;
 import org.com.admin.service.dto.AdminPostDto;
 import org.com.customer.repo.entity.CustomersEntity;
 import org.com.customer.service.dto.CustomersDto;
 import org.com.customer.service.dto.CustomersPostDto;
+import org.com.order.repo.entity.OrderProductsEntity;
 import org.com.order.repo.entity.OrdersEntity;
 import org.com.order.service.dto.OrderDto;
 import org.com.order.service.dto.OrderPostDto;
+import org.com.order.service.dto.OrderProductIdDto;
+import org.com.order.service.dto.OrderProductsDto;
 import org.com.product.repo.entity.ProductsEntity;
 import org.com.product.service.dto.ProductDto;
 import org.com.product.service.dto.ProductPostDto;
@@ -67,6 +72,12 @@ public class MapperClass {
     }
     public static OrdersEntity OrderDtoToEntity(OrderPostDto orderDto){
         return new OrdersEntity(orderDto);
+    }
+
+    // Cart
+
+    public static OrderProductsDto OrderProductsEntityToDto(OrderProductsEntity ordersEntity){
+        return new OrderProductsDto(ordersEntity);
     }
 
 

@@ -5,10 +5,14 @@ import org.com.order.repo.entity.OrderProductsIdEntity;
 import org.com.order.repo.entity.OrdersEntity;
 import org.com.product.repo.entity.ProductsEntity;
 
+import jakarta.json.bind.annotation.JsonbTransient;
+
 public class OrderProductsDto {
 
     private OrderProductsIdEntity id;
+    @JsonbTransient
     private ProductsEntity products;
+    @JsonbTransient
     private OrdersEntity orders;
     private int quantity;
 

@@ -39,7 +39,14 @@ public class OrderProductsEntity  implements java.io.Serializable {
        this.quantity = quantity;
     }
    
-     @EmbeddedId
+     public OrderProductsEntity(OrderProductsEntity ordersEntity) {
+        this.id = ordersEntity.getId();
+        this.products = ordersEntity.getProducts();
+        this.orders = ordersEntity.getOrders();
+        this.quantity = ordersEntity.getQuantity();
+    }
+
+    @EmbeddedId
 
     
     @AttributeOverrides( {

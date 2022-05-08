@@ -14,5 +14,7 @@ public interface ProductRepo {
     ProductsEntity deleteProduct(int id);
     ProductsEntity updateProductById(int id,ProductPostDto productDto);
     List<ProductsEntity> findProductWithCategory(String category);
+    boolean updateQuantity(int ProductId, int quantity);
+    
     
 }

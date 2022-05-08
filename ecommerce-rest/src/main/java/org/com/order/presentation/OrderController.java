@@ -1,14 +1,9 @@
 package org.com.order.presentation;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import org.com.customer.repo.entity.CustomersEntity;
-import org.com.customer.repo.impl.CustomerRepoImp;
-import org.com.customer.repo.interfaces.CustomerRepo;
-import org.com.customer.service.dto.CustomersDto;
-import org.com.customer.service.dto.CustomersPostDto;
+
 import org.com.order.repo.entity.OrdersEntity;
 import org.com.order.repo.impl.OrderRepoImp;
 import org.com.order.repo.interfaces.OrderRepo;

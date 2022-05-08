@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.com.customer.repo.entity.CustomersEntity;
 import org.com.order.repo.entity.OrderProductsEntity;
+import org.com.order.repo.entity.OrderProductsIdEntity;
 import org.com.order.repo.entity.OrdersEntity;
 import org.com.order.repo.interfaces.ShoppingCartRepo;
 import org.com.order.service.dto.OrderDto;
@@ -20,62 +21,69 @@ import org.com.util.factory.EntityManagerProvider;
 import org.com.util.mapper.MapperClass;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 public class ShoppingCartRepoImp implements ShoppingCartRepo {
     EntityManagerProvider entityManagerProvider = EntityManagerProvider.getInstance();
     EntityManager entityManager = entityManagerProvider.getEntityManager();
 
     @Override
-    public OrderDto getShoppingCart(Integer customerId) {
-        // TODO Auto-generated method stub
-        return null;
+    public boolean addProductToShoppingCart(OrderProductsEntity orderProductsEntity) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(orderProductsEntity);
+        entityManager.getTransaction().commit();
+        return true;
     }
 
     @Override
-    public boolean increaseProductInShoppingCart(Integer productId) {
-        // TODO Auto-generated method stub
-        return false;
+    public void deleteProductFromShoppingCard(OrderProductIdDto orderProductsIdEntity) {
+        
+        Query query = entityManager.createQuery("SELECT p FROM OrderProductsEntity p where p.id.orderId=:orderId and p.id.productId=:productId");
+        query.setParameter("orderId", orderProductsIdEntity.getOrderId());
+        query.setParameter("productId", orderProductsIdEntity.getProductId());
+        List<OrderProductsEntity> orderProductsEntities = query.getResultList();
+        entityManager.getTransaction().begin();
+        entityManager.remove(orderProductsEntities.get(0));
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
 
     @Override
-    public void decreaseProductInShoppingCart(Integer productId) {
-        // TODO Auto-generated method stub
+    public boolean updateProductInShoppingCart(int productId, int orderId, int quantity) {
+       
 
+
+        Query query = entityManager.createQuery("SELECT p FROM OrderProductsEntity p where p.id.orderId=:orderId and p.id.productId=:productId");
+        query.setParameter("orderId", orderId);
+        query.setParameter("productId", productId);
+        OrderProductsEntity updated= (OrderProductsEntity) query.getSingleResult();
+        updated.setQuantity(quantity);
+        entityManager.getTransaction().begin();
+        entityManager.merge(updated);
+        entityManager.getTransaction().commit();
+
+        return true;
     }
 
     @Override
-    public void deleteProductFromShoppingCard(Integer productId, Integer productQuantity) {
-        // TODO Auto-generated method stub
+    public List<OrderProductsEntity> getCustomerShoppingCart(Integer customerId) {
+        TypedQuery<OrdersEntity> orderQuery = entityManager
+                .createQuery("select p from OrdersEntity p where p.customer_id like :param", OrdersEntity.class);
+        orderQuery.setParameter("param", customerId);
 
+        TypedQuery<OrderProductsEntity> query = entityManager
+                .createQuery("from OrderProductsEntity op where op.OrdersEntity=:param ", OrderProductsEntity.class);
+        query.setParameter("param", orderQuery);
+        
+        return query.getResultList();
     }
 
     @Override
-    public List<OrdersEntity> addProductToShoppingCart(OrdersEntity orderEntity,
-            Integer CustomerId) {
-                
-
-        List<OrdersEntity> ordersEntities  = new ArrayList<>();
-        Set<OrderProductsEntity> orderProductEntities = new HashSet<>(orderEntity.getOrderProductses());
-        orderEntity.setOrderProductses(null);
-        CustomersEntity customerEntity = new CustomersEntity();
-        customerEntity.setId(CustomerId);
-        orderEntity.setCustomers(customerEntity);
-        try {
-            entityManager.getTransaction().begin();
-            orderEntity = entityManager.merge(orderEntity);
-
-            for (OrderProductsEntity orderProductEntity : orderProductEntities) {
-                orderProductEntity.getId().setOrderId(orderEntity.getId());
-                orderProductEntity.getId().setProductId(orderProductEntity.getId().getProductId());
-                entityManager.merge(orderProductEntity);
-            }
-            entityManager.getTransaction().commit();
-            orderEntity.setOrderProductses(orderProductEntities);
-            ordersEntities.add(orderEntity);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ordersEntities;
+    public List<OrderProductsEntity> getCartProductsList() {
+        TypedQuery<OrderProductsEntity> query = entityManager.createQuery("from OrderProductsEntity",
+                OrderProductsEntity.class);
+        return query.getResultList();
     }
 
 }

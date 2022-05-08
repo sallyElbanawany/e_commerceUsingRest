@@ -394,36 +394,6 @@ Authorization: notdefind
 
 # order###
 
-###
-
-GET /myshop/api/orders/1 HTTP/1.1
-Host: localhost:9090
-Accept: application/json
-
-
-
-
-###
-PUT	/myshop/api/orders/customer/1/updateOrder/1 HTTP/1.1
-Host: localhost:9090
-Content-Type:application/json
-Authorization: admain
-
-{
-	"createdAt":"1998-02-02",
-    "isSubmitted":false,
-    "totalPrice":143345.1
-}
-
-###
-
-DELETE  /myshop/api/customer/1/removeOrder HTTP/1.1
-Host: localhost:9090
-Content-Type: application/json
-Authorization: admain
-
-
-
 # *************************************************
 
 ###
@@ -477,22 +447,43 @@ Authorization: admain
 # ************************
 
 ###
-POST  /myshop/api/cart/order/customer/1/addProduct HTTP/1.1
+POST  /myshop/api/cart/orderId/2/productId/1/Quantity/2 HTTP/1.1
 Host: localhost:9090
 Content-Type: application/json
 
-{
-    "createdAt":"1998-02-02",
-    "isSubmitted":false,
-    "totalPrice":143345.1,
-    "orderProductses":[
-        {
+###
 
-            "quantity":20
-        }
-    ]
+GET /myshop/api/cart HTTP/1.1
+Host: localhost:9090
+Accept: application/json
 
-}
+
+
+###
+
+GET /myshop/api/cart/customerId/1 HTTP/1.1
+Host: localhost:9090
+Accept: application/json
+
+
+
+###
+
+DELETE  /myshop/api/cart/orderId/2/productId/1 HTTP/1.1
+Host: localhost:9090
+Content-Type: application/json
+
+
+###
+PUT	/myshop/api/cart/orderId/4/productId/1/Quantity/5 HTTP/1.1
+Host: localhost:9090
+Content-Type:application/json
+
+
+
+
+
+
 
 
 
