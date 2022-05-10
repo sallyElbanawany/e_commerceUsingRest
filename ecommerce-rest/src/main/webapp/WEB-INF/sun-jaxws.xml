@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+
+  <endpoint name="Customer"
+  implementation="org.com.soap.services.CustomerService"
+  url-pattern="/ws/CustomerService"
+  />
+
+  <endpoint
+  name="AdminService"
+  implementation="org.com.soap.services.AdminService"
+  url-pattern="/ws/AdminService"
+  />
+
+  <endpoint
+  name="OrderService"
+  implementation="org.com.soap.services.OrderService"
+  url-pattern="/ws/OrderService"
+  />
+
+  <endpoint
+  name="ProductService"
+  implementation="org.com.soap.services.ProductService"
+  url-pattern="/ws/ProductService"
+  />
+
+  <endpoint
+  name="ShoppingCartService"
+  implementation="org.com.soap.services.ShoppingCartService"
+  url-pattern="/ws/ShoppingCartService"
+  />
+  <endpoint
+  name="a"
+  implementation="org.com.soap.services.A"
+  url-pattern="/ws/a"
+  />
+
+
+</endpoints>
